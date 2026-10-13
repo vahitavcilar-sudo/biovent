@@ -1,0 +1,24 @@
+{
+  "buildId": "JUGBfrDwBL_Z7QkWWmPfy",
+  "archives": [
+    {
+      "path": "/workspace/biovent-v10-source.zip",
+      "bytes": 76080044,
+      "files": 300,
+      "sha256": "c405a07d3031643bc67e9ee517863ed5602914b1c767b6b6e3771a88b87583fe"
+    },
+    {
+      "path": "/workspace/biovent-v10-static-hosting.zip",
+      "bytes": 39687900,
+      "files": 401,
+      "sha256": "a8d4f8f55efd05e9b59e28b4f63c0003ff57cca3bc0c9343a7373005a2771826"
+    },
+    {
+      "path": "/workspace/biovent-v10-windows-test.zip",
+      "bytes": 62939241,
+      "sha256": "4bf2fe0e5ff0c379a73ab23bdcc9aa6f23be269575cc0b603b2ae5833744e12a"
+    }
+  ],
+  "originalVideoMastersIncluded": false,
+  "newPromxOriginalImported": false
+}
