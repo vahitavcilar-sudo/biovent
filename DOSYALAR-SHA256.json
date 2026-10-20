@@ -1,0 +1,26 @@
+{
+  "buildId": "VzRHCDHEYC328Md3xgEVl",
+  "sourceCommit": "d3a7f2bb9887aa27464d5c4dbd2835c21abf46f9",
+  "archives": [
+    {
+      "filename": "biovent-v11-motion-fix-windows.zip",
+      "bytes": 45811339,
+      "sha256": "f55c649d64e2e4cf34517886a4f524a82f6f1d12b4cc5d96e157d64f0ac1e621",
+      "files": 434
+    },
+    {
+      "filename": "biovent-v11-motion-fix-source.zip",
+      "bytes": 73618905,
+      "sha256": "3038dc253bc8aa72e051b18bca130990aa7b1229cd0b53a08da4626d8ed03e9d",
+      "files": 345
+    },
+    {
+      "filename": "biovent-v11-motion-fix-hosting.zip",
+      "bytes": 40024776,
+      "sha256": "0ccbf6a08714ace03c6d467083aa76c316598cf27f4d64c620ddc62c97f76959",
+      "files": 427
+    }
+  ],
+  "windowsExecuted": false,
+  "productionVideos": false
+}
