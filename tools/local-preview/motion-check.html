@@ -6,9 +6,9 @@
 <p>Bu dosya cihazınızın hareket tercihini gösterir. Siteyi açmak için <code>SITEYI-AC.bat</code> dosyasını kullanın.</p>
 <div id="result">JavaScript kontrolü yükleniyor… JavaScript kapalıysa sonuç gösterilemez.</div>
 <h2>Hareketler görünmüyorsa</h2>
-<ol><li>Sitenin açılış alanının altındaki ortadaki <strong>▶ oynat</strong> düğmesine basın. İlk otomatik ürün değişimi yaklaşık 8,5 saniye sonra gerçekleşir. Ürün adlarına veya oklara basarak geçişleri hemen inceleyebilirsiniz.</li>
+<ol><li>Slider otomatik başlar ve her <strong>5 saniyede</strong> ürün değiştirir. Duraklat düğmesini kullandıysanız <strong>▶ oynat</strong> ile devam edin. Ürün adlarına veya oklara basarak geçişleri hemen inceleyebilirsiniz.</li>
 <li>Bu sayfada hareket azaltma açık görünüyorsa ve animasyonları görmek istiyorsanız: Windows 11'de <strong>Ayarlar → Erişilebilirlik → Görsel efektler → Animasyon efektleri</strong>; Windows 10'da <strong>Ayarlar → Erişim Kolaylığı → Ekran → Windows'ta animasyonları göster</strong> ayarını açın.</li>
-<li>Ayarı değiştirdikten sonra siteyi yenileyin. Veri tasarrufu açıkken otomatik geçiş kapalı kalabilir; ürünler oklarla seçilebilir.</li></ol>
+<li>Ayarı değiştirdikten sonra siteyi yenileyin. Hareket azaltma veya veri tasarrufu açıkken de ürünler her 5 saniyede bir anlık değişir; büyük geçiş hareketleri kullanılmaz.</li></ol>
 <p>Eski paketteki <code>HAREKET-VIDEOLARI</code> klasörü tarayıcı test kayıtlarıdır. Bunlar siteye gömülü ürün filmleri değildir. Sitedeki hareketler ürün görsellerine uygulanır.</p>
 <script>const motion=matchMedia('(prefers-reduced-motion:reduce)'),data=matchMedia('(prefers-reduced-data:reduce)');function update(){const c=navigator.connection;document.getElementById('result').textContent='Hareket azaltma: '+(motion.matches?'AÇIK — site cihaz tercihinize uyar.':'KAPALI — animasyonlara izin veriliyor.')+' Veri tasarrufu: '+(data.matches||c?.saveData||c?.effectiveType?.includes('2g')?'AÇIK':'KAPALI')+'.'}motion.addEventListener('change',update);data.addEventListener('change',update);navigator.connection?.addEventListener('change',update);update();</script>
 </html>

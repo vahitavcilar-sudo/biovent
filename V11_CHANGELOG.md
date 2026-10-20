@@ -25,3 +25,7 @@ No live form receiver, verified legal/controller details or Natro deployment was
 ## Playback correction — 20 October 2026
 
 Explicit play now starts automatic progression under the pointer and on the focused play button; new user interactions still pause safely. A four-language status explains pause/device/data constraints, including on mobile. See `V11_MOTION_FIX.md` for this build’s targeted validation and updated Windows package. Old QA movies are excluded from that local-review package.
+
+## Five-second slider — 20 October 2026
+
+Automatic progression is now 5000 ms. Hover, keyboard focus and manual selections no longer pause it; each manual selection resets the full interval. Explicit pause/resume remains available. Reduced motion and data saving use instant changes on the same interval. See `V11_SLIDER_5S.md`.

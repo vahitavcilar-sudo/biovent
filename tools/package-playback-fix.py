@@ -4,11 +4,14 @@ import hashlib
 import json
 import shutil
 import subprocess
+import sys
 import zipfile
 
 repo=Path(__file__).resolve().parents[1]
 art=repo/'artifacts/v11'
 build=(repo/'.next/BUILD_ID').read_text().strip()
+five_second='--five-second' in sys.argv
+release='biovent-v11-slider-5s' if five_second else 'biovent-v11-motion-fix'
 reports={}
 for name in ['playback-fix','showroom-results','showroom-lifecycle','choreography-results','motion-results','launcher-http','playback-helper']:
     report=json.loads((art/(name+'.json')).read_text())
@@ -29,7 +32,7 @@ shutil.copytree(repo/'deployment/wordpress-hosting/draft-public_html',package/'s
 assert not list((package/'site').rglob('*.webm')) and not list((package/'site').rglob('*.mp4'))
 assert not (package/'HAREKET-VIDEOLARI').exists()
 shutil.copy2(repo/'tools/local-preview/motion-check.html',package/'HAREKET-KONTROL.html')
-shutil.copy2(repo/'V11_MOTION_FIX.md',package/'DUZELTME-VE-TESTLER.md')
+shutil.copy2(repo/('V11_SLIDER_5S.md' if five_second else 'V11_MOTION_FIX.md'),package/'DUZELTME-VE-TESTLER.md')
 (package/'TEST-SONUCLARI.json').write_text(json.dumps({'buildId':build,'reports':reports,'windowsExecuted':False},indent=2,ensure_ascii=False))
 (package/'ONCE-BUNU-OKU.txt').write_text('''BIOVENT V11 — HAREKET / OYNAT DUZELTMESI
 
@@ -37,15 +40,16 @@ Eski onizlemenin siyah penceresini once kapatin.
 1. ZIP'i yeni bir klasore TUMUNU AYIKLA ile cikarin.
 2. SITEYI-AC.bat dosyasini acin. Tarayici otomatik acilir.
 3. Siyah pencereyi acik tutun. Node.js/Python kurulumu gerekmez.
-4. Acilis alaninin altindaki ortadaki OYNAT dugmesine basin.
-   Fare ve klavye odagi dugmede kalsa da otomatik gecis baslar.
-   Ilk urun degisimi yaklasik 8,5 saniye sonra olur.
+4. Slider kendiliginden her 5 saniyede bir sonraki urune gecer.
+   Fare, klavye odagi ve manuel urun secimi otomatik gecisi durdurmaz.
+   Yalnizca DURAKLAT dugmesine basarsaniz durur; OYNAT ile devam eder.
 5. Urun isimlerine veya oklara basarak gecisleri hemen inceleyin.
    Asagi kaydirarak Smart inceleme ve urun sahnelerini gezin.
 
 Hareket azaltma acik yaziyorsa HAREKET-KONTROL.html dosyasini acin.
 Bu dosya cihazinizin hareket tercihini ve Windows ayar yolunu gosterir.
-Cihazinizin erisilebilirlik tercihi site tarafindan zorla degistirilmez.
+Hareket azaltma/veri tasarrufu acikken urunler yine her 5 saniyede
+bir, buyuk hareket animasyonu olmadan anlik degisir.
 
 Eski paketteki HAREKET-VIDEOLARI dosyalari tarayici TEST KAYITLARIDIR.
 Siteye gomulu urun videosu degildir. Bu yeni test paketine eklenmediler.
@@ -71,7 +75,7 @@ def archive(path,files,prefix=''):
     assert path.stat().st_size<100_000_000
     return {'filename':path.name,'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'files':len(hashes)+1}
 
-results=[archive(Path('/workspace/biovent-v11-motion-fix-windows.zip'),[(p,p.relative_to(package).as_posix()) for p in sorted(package.rglob('*')) if p.is_file() and p.name!='SHA256-MANIFEST.json'],'biovent-v11-test/')]
+results=[archive(Path('/workspace')/(release+'-windows.zip'),[(p,p.relative_to(package).as_posix()) for p in sorted(package.rglob('*')) if p.is_file() and p.name!='SHA256-MANIFEST.json'],'biovent-v11-test/')]
 skip={'.git','node_modules','.next','.next-export','out','artifacts','media-source','__pycache__','coverage'}
 source=[]
 for p in sorted(repo.rglob('*')):
@@ -81,8 +85,8 @@ for p in sorted(repo.rglob('*')):
     if rel.parts[:2]==('deployment','wordpress-hosting') and len(rel.parts)>2 and rel.parts[2] in {'public_html','draft-public_html','draft-subfolder'}:continue
     source.append((p,rel.as_posix()))
 source.append((art/'playback-fix.json','qa/playback-fix.json'))
-results.append(archive(Path('/workspace/biovent-v11-motion-fix-source.zip'),source,'biovent-v11/'))
+results.append(archive(Path('/workspace')/(release+'-source.zip'),source,'biovent-v11/'))
 host=repo/'deployment/wordpress-hosting/public_html'
-results.append(archive(Path('/workspace/biovent-v11-motion-fix-hosting.zip'),[(p,p.relative_to(host).as_posix()) for p in sorted(host.rglob('*')) if p.is_file()]))
-(art/'playback-delivery.json').write_text(json.dumps({'buildId':build,'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip(),'archives':results,'windowsExecuted':False,'productionVideos':False},indent=2))
+results.append(archive(Path('/workspace')/(release+'-hosting.zip'),[(p,p.relative_to(host).as_posix()) for p in sorted(host.rglob('*')) if p.is_file()]))
+(art/('slider-5s-delivery.json' if five_second else 'playback-delivery.json')).write_text(json.dumps({'buildId':build,'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip(),'archives':results,'windowsExecuted':False,'productionVideos':False},indent=2))
 print(json.dumps(results,indent=2))

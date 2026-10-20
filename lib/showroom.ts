@@ -1,7 +1,7 @@
 import type {Locale} from './i18n';
 import type {MediaKey} from '@/data/media';
 import type {ProductId} from '@/data/products';
-export const showroomMotion={videoStart:600,ambient:9000,entry:760,exit:420,textDelay:180,background:820,autoplay:8500,swipe:52,pointer:6,settle:960} as const;
+export const showroomMotion={videoStart:600,ambient:9000,entry:760,exit:420,textDelay:180,background:820,autoplay:5000,swipe:52,pointer:6,settle:960} as const;
 export const heroPresentation:readonly {id:ProductId;media:MediaKey;theme:string;entryX:number;entryY:number;angle:number;frame:readonly [string,string,string,string];mobileFrame:readonly [string,string,string,string]}[]=[
  {id:'smart',media:'smartHero',theme:'graphite',entryX:28,entryY:45,angle:1.4,frame:['5%','4%','7%','49%'],mobileFrame:['2%','0%','45%','0%']},
  {id:'promx',media:'promxHero',theme:'technical',entryX:-36,entryY:65,angle:-1,frame:['4%','53%','4%','8%'],mobileFrame:['2%','10%','45%','10%']},

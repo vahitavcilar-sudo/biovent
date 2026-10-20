@@ -1,6 +1,6 @@
 # BioVent V11
 
-Current playback correction: see `V11_MOTION_FIX.md`. The updated Windows review ZIP makes explicit play work while the pointer and focus remain on the control, and explains device motion constraints.
+Current slider behavior: `V11_SLIDER_5S.md`. The homepage advances every five seconds, including while hovered or focused and after manual product selection. Reduced motion uses instant cuts; explicit pause remains available.
 
 A four-language, product-focused dental implant manufacturer website built on Next.js 16, React 19 and TypeScript. The existing Smart-first motion stage, continuous engineering journey, official logo, genuine products, catalogues, responsive/RTL behavior and static hosting architecture are preserved.
 

@@ -1,5 +1,7 @@
 # BioVent V11 — oynat ve animasyon düzeltmesi
 
+Bu önceki düzeltmenin raporudur. Güncel 5 saniyelik slider davranışı ve kontroller için `V11_SLIDER_5S.md` dosyasını kullanın.
+
 20 Ekim 2026. Bu düzeltmenin statik build kimliği: `VzRHCDHEYC328Md3xgEVl`.
 
 ## Bulunan hata
