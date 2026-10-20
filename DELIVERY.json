@@ -1,0 +1,32 @@
+{
+  "buildId": "A6XzWk-OM9yukSmEjiWDu",
+  "sourceCommit": "3b86e5728d8db2460393f6652d6020be53a52594",
+  "archives": [
+    {
+      "filename": "biovent-v12-windows-test.zip",
+      "bytes": 43064781,
+      "sha256": "1ed77f1e7f6d33bbfcf23bbedc39660099a4c3e3821527dd06f4a44896d4f739",
+      "files": 432
+    },
+    {
+      "filename": "biovent-v12-source.zip",
+      "bytes": 73679975,
+      "sha256": "eccad4d34da85e87c18d6f4bbc0d24ab98622546193afb304b1a2fb1f73baa2a",
+      "files": 389
+    },
+    {
+      "filename": "biovent-v12-hosting.zip",
+      "bytes": 40063697,
+      "sha256": "661b3b3162a6adacfffdad944d4276c9664d036ad016dbba5a31407f4d2ff234",
+      "files": 427
+    },
+    {
+      "filename": "biovent-v12-visual-review.zip",
+      "bytes": 28796047,
+      "sha256": "f72e77c92f507ae91865266315ac4c82a62ff9f0fd77463e1c127c27b0b7677b",
+      "files": 100
+    }
+  ],
+  "windowsExecuted": false,
+  "productionVideos": false
+}
