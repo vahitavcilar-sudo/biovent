@@ -1,0 +1,26 @@
+{
+  "buildId": "5-nU_CHV3J_5jn5pM5mRd",
+  "sourceCommit": "428547792490a96e2b85830177f65fd81e612fda",
+  "archives": [
+    {
+      "filename": "biovent-v11-slider-5s-windows.zip",
+      "bytes": 45810520,
+      "sha256": "1ee009784af58842a2acecd74667623cb4b7d49cd5b142db0a12428bfd0a07d4",
+      "files": 434
+    },
+    {
+      "filename": "biovent-v11-slider-5s-source.zip",
+      "bytes": 73621034,
+      "sha256": "f92c0d1fffb73d895f4699d3434b9057a81783cfb3578f180d92c3de7889be5a",
+      "files": 346
+    },
+    {
+      "filename": "biovent-v11-slider-5s-hosting.zip",
+      "bytes": 40024013,
+      "sha256": "66afff6e2fc1715b79c21578569f8e531198c9914a42812e8c99c5006ab31e80",
+      "files": 427
+    }
+  ],
+  "windowsExecuted": false,
+  "productionVideos": false
+}
