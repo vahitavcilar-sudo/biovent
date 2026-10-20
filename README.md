@@ -25,3 +25,5 @@ GitHub ZIP sayfası açılırsa **Download raw file** düğmesini kullanın. `Co
 48 sayfa / 576 ekran boyutu; 96 tam sayfa axe kontrolü ve 84 ölçü seçimi geçti. İlave form/inceleyici/karşılaştırma/slider kontrolleri rapordadır. Son Lighthouse erişilebilirlik 100, CLS <0.1; bazı sayfalarda 2.5 saniyelik LCP hedefi açık. INP, fiziksel Windows ve canlı Natro/PHP gönderimi doğrulanmadı. Kurumsal üretim/sertifika/iletişim kanıtları ve gerçek form alıcısı yayın öncesinde tamamlanmalı. Ayrıntılar `V12_QA_REPORT.md` ve `V12_DEPLOYMENT.md`.
 
 ![BioVent V12 ana sayfa](V12-ANA-SAYFA.png)
+
+Dört doğrudan ZIP bağlantısı HTTP 200 / application/zip ile yeniden indirildi; CRC ve tüm dosya SHA-256 değerleri doğrulandı. Ayrıntılar: [DOWNLOAD-VERIFIED.json](DOWNLOAD-VERIFIED.json).
