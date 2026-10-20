@@ -1,0 +1,2 @@
+import Image from 'next/image';import {asset} from '@/lib/paths';
+export function BrandLogo({context='header',priority=false}:{context?:'header'|'footer'|'corporate';priority?:boolean}){return <span className={`brand-logo brand-logo-${context}`}><Image src={asset('/brand/biovent/logo-primary.svg')} width={748} height={214} alt="Biovent Dental Implant Systems" priority={priority} fetchPriority={priority?'high':'auto'} decoding={priority?'sync':'async'}/></span>}

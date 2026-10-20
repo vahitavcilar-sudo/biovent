@@ -1,0 +1,19 @@
+# V6 art direction — audit and gates
+
+V5 audit before implementation: hero ends abruptly at a light statement; Smart engineering repeats an opaque rectangular stage; five chapter texts coexist; collection uses the same two-column structure; distributor starts as a generic light page; large white gaps lack optical anchors. Route overlay is already restrained, but lacks product-source composition.
+
+Preserve all source facts, original logo/Smart bytes, 44 routes, native scroll, static export and preview-form semantics. First gate: same Smart DOM remains sticky across hero and titanium continuation. Record and inspect before story/collection work. Second gate: open dark engineering scene, single active desktop chapter, sequential mobile. Third gate: four distinct collection compositions. Exactly one signature scene on homepage. Final gate: exact export functional/a11y/motion/performance validation; no live publication.
+
+Gate 1: hero/continuation exported, recorded, then frame-reviewed before expanding other scenes. Same DOM image remains sticky while illumination shifts; no file swap or scale snap. Typography duplication found during review was removed from continuation. Source PNG bytes unchanged.
+
+Implementation: five scroll chapters in ~360vh, open graphite visual with synchronized whole-layer product/SVG poses up to 32px / .7deg / 1.10x, single visible desktop chapter; natural sequential mobile; 140vh signature once (110vh mobile); four distinct collection proportions/backgrounds; dark B2B opening and light application emergence. Decorative watermark is a CSS-generated graphic, excluded from semantic text. Initial QA found light-surface inherited dark-text colours and a tablet image entrance overflow; corrected contrast and scene bounds without altering source imagery.
+
+Performance diagnosis: first V6 lab run had Home 94 / Arabic 87. Nested parent plus line/copy entrances delayed useful text, and Latin font preload competed with the primary Arabic face. Removed redundant parent entrances, used readable transform-only mobile text entrances, removed eager Latin preload (CSS loads it where used), and gave the original header SVG explicit high priority/synchronous decoding. Motion and Arabic typography remain intact. Before/after reports are preserved.
+
+Arabic font optimization preserves the entire basic Arabic block, all UI characters, variable weights 100–900 and GSUB/GPOS closure. Core 67,764 bytes instead of 149,980; extended scripts/presentation codepoints use an unchanged full-source face only when needed. No glyph is redrawn. Original source remains preserved.
+
+Further Arabic profiling identified the actual LCP as the partly visible Smart image, rather than the header or text. The mobile image inherited an unnecessarily long desktop entrance. Its responsive entrance now lasts 600ms with no start delay and a 12px whole-layer translation. Desktop choreography remains unchanged. This targeted change follows the measured expensive operation rather than removing motion.
+
+Final loading refinement: profiling found the collection's first Smart image was lazy even while intersecting the mobile viewport. The first collection image is now eager/high priority. Responsive AVIF candidates receive a matching server-rendered image preload with the same srcset/sizes; unsupported formats still fall back through picture. This changes loading discovery, not image/motion geometry. Active engineering and signature scenes also received axe scans with zero detected violations.
+
+Manual frame review additionally found dark inherited strong-text in the Smart fact strip and a collapsed Monoblock collection visual: centered grid alignment plus absolute image layers gave the stage zero width. Corrected the fact strip foreground and gave the centered Monoblock stage an explicit responsive width. Responsive tests now assert every product stage has a real, noncollapsed visual field. Source imagery remains unchanged.

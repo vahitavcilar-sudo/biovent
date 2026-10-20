@@ -1,0 +1,12 @@
+{
+  "originalSHA256": "ce85091f020920b65762b387b194ef59457ea5b25b760f2dcc35240a94bb8669",
+  "coreBytes": 67764,
+  "originalBytes": 165960,
+  "verifiedArabicCodepoints": 44,
+  "weightRange": [
+    100,
+    900
+  ],
+  "shapingTablesPreserved": true,
+  "extendedFace": "lazy unicode-range fallback"
+}

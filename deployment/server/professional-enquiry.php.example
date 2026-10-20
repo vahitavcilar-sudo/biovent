@@ -1,0 +1,91 @@
+<?php
+// Opt-in standalone PHP 8.1+ example, kept outside the static public package.
+// Configure a separate professional destination and the trusted variant registry before enabling.
+declare(strict_types=1);
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
+header('X-Content-Type-Options: nosniff');
+function professionalRespond(int $status, bool $accepted = false): never {
+    http_response_code($status);
+    echo json_encode(['accepted' => $accepted]);
+    exit;
+}
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') { header('Allow: POST'); professionalRespond(405); }
+$origin = rtrim((string)getenv('BIOVENT_PROFESSIONAL_ALLOWED_ORIGIN'), '/');
+$recipient = (string)getenv('BIOVENT_PROFESSIONAL_TO');
+$sender = (string)getenv('BIOVENT_PROFESSIONAL_FROM');
+$rateDirectory = (string)getenv('BIOVENT_PROFESSIONAL_RATE_DIRECTORY');
+$registryFile = (string)getenv('BIOVENT_PROFESSIONAL_VARIANTS_FILE');
+if (!$origin || !filter_var($recipient, FILTER_VALIDATE_EMAIL) || !filter_var($sender, FILTER_VALIDATE_EMAIL)
+    || !is_dir($rateDirectory) || !is_writable($rateDirectory) || !is_file($registryFile) || !is_readable($registryFile)) { professionalRespond(503); }
+$rateRoot = realpath($rateDirectory);
+$registryPath = realpath($registryFile);
+$documentRoot = realpath((string)($_SERVER['DOCUMENT_ROOT'] ?? ''));
+foreach ([$rateRoot, $registryPath] as $privatePath) {
+    if (!$privatePath || ($documentRoot && ($privatePath === $documentRoot || str_starts_with($privatePath, $documentRoot . DIRECTORY_SEPARATOR)))) { professionalRespond(503); }
+}
+// Same-origin JSON only. No cross-origin response headers are enabled by this example.
+if (rtrim((string)($_SERVER['HTTP_ORIGIN'] ?? ''), '/') !== $origin) { professionalRespond(403); }
+if (!str_starts_with(strtolower((string)($_SERVER['CONTENT_TYPE'] ?? '')), 'application/json')) { professionalRespond(415); }
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 16384) { professionalRespond(413); }
+$raw = file_get_contents('php://input', false, null, 0, 16385);
+if ($raw === false || strlen($raw) > 16384) { professionalRespond(413); }
+try {
+    $data = json_decode($raw, true, 16, JSON_THROW_ON_ERROR);
+} catch (Throwable $error) { professionalRespond(400); }
+try {
+    $registryRaw = file_get_contents($registryPath, false, null, 0, 262145);
+    if ($registryRaw === false || strlen($registryRaw) > 262144) { professionalRespond(503); }
+    $registry = json_decode($registryRaw, true, 16, JSON_THROW_ON_ERROR);
+} catch (Throwable $error) { professionalRespond(503); }
+if (!is_array($registry)) { professionalRespond(503); }
+if (!is_array($data) || ($data['kind'] ?? null) !== 'professional' || ($data['honeypot'] ?? null) !== '' || ($data['consent'] ?? null) !== true) { professionalRespond(400); }
+if (!in_array($data['purpose'] ?? null, ['information','quotation'], true) || !in_array($data['locale'] ?? null, ['en','de','tr','ar'], true)) { professionalRespond(400); }
+$product = $data['product'] ?? null;
+if (!is_string($product) || !in_array($product, ['smart','promx','monoblock','zygoma'], true) || !isset($registry[$product]) || !is_array($registry[$product])) { professionalRespond(400); }
+$fields = [];
+foreach (['contactName'=>160,'company'=>160,'country'=>160,'email'=>254,'phone'=>160,'message'=>2000] as $key=>$limit) {
+    if (!isset($data[$key]) || !is_string($data[$key]) || strlen($data[$key]) > $limit * 4 || str_contains($data[$key], "\0")) { professionalRespond(400); }
+    if (preg_match_all('/./us', $data[$key]) > $limit) { professionalRespond(400); }
+    $value = trim($data[$key]);
+    if ($key !== 'message' && preg_match('/[\r\n]/', $value)) { professionalRespond(400); }
+    $fields[$key] = $value;
+}
+if (!$fields['contactName'] || !$fields['company'] || !$fields['country'] || !filter_var($fields['email'], FILTER_VALIDATE_EMAIL)) { professionalRespond(400); }
+if (!array_key_exists('quantity',$data) || ($data['quantity'] !== null && (!is_int($data['quantity']) || $data['quantity'] < 1 || $data['quantity'] > 100000))) { professionalRespond(400); }
+foreach (['diameter','length','reference'] as $key) { if (!array_key_exists($key,$data)) { professionalRespond(400); } }
+$variant = null;
+if ($data['diameter'] === null && $data['length'] === null) {
+    if ($data['reference'] !== null) { professionalRespond(400); }
+} else {
+    if ((!is_int($data['diameter']) && !is_float($data['diameter'])) || (!is_int($data['length']) && !is_float($data['length']))) { professionalRespond(400); }
+    foreach ($registry[$product] as $candidate) {
+        if (!is_array($candidate) || ($candidate['verification'] ?? null) !== 'catalogue-listed' || ($candidate['productId'] ?? null) !== $product) { professionalRespond(503); }
+        if (($candidate['diameter'] ?? null) == $data['diameter'] && ($candidate['length'] ?? null) == $data['length']) { $variant = $candidate; break; }
+    }
+    if (!$variant || $data['reference'] !== ($variant['reference'] ?? null)) { professionalRespond(400); }
+}
+// The rate key uses only the trusted peer IP, not client-controlled forwarding headers.
+$key = hash('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+$file = fopen(rtrim($rateDirectory,DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $key . '.json', 'c+');
+if (!$file || !flock($file, LOCK_EX)) { professionalRespond(503); }
+try {
+    $previous = json_decode(stream_get_contents($file) ?: '{}', true) ?: [];
+    $now = time();
+    $hits = array_values(array_filter($previous['hits'] ?? [], fn($stamp) => is_int($stamp) && $stamp > $now-3600));
+    if (count($hits) >= 5 || ($hits && max($hits) > $now-60)) { header('Retry-After: 60'); professionalRespond(429); }
+    $hits[] = $now;rewind($file);ftruncate($file,0);fwrite($file,json_encode(['hits'=>$hits]));fflush($file);
+} finally { flock($file,LOCK_UN);fclose($file); }
+$body = "BioVent professional product enquiry\nPurpose: " . $data['purpose'] . "\nProduct: " . $product . "\n";
+if ($variant) {
+    $body .= 'Diameter: ' . $variant['diameter'] . " mm\nLength: " . $variant['length'] . " mm\nCatalogue reference: " . ($variant['reference'] ?? 'Not assigned') . "\n";
+    $body .= 'Catalogue: ' . ($variant['source']['documentId'] ?? '') . ' / ' . ($variant['source']['page'] ?? '') . "\n";
+} else { $body .= "Configuration: product-level request; dimensions unspecified\n"; }
+$body .= 'Quantity: ' . ($data['quantity'] ?? 'Not specified') . "\nLocale: " . $data['locale'] . "\n\n";
+foreach ($fields as $name=>$value) { $body .= $name . ': ' . $value . "\n"; }
+// Destinations never come from browser input. Use a mail transport configured for this host.
+$headers = ['From'=>$sender,'Reply-To'=>$fields['email'],'Content-Type'=>'text/plain; charset=UTF-8'];
+try { $accepted = mail($recipient,'BioVent professional product enquiry',$body,$headers); } catch (Throwable $error) { $accepted = false; }
+if (!$accepted) { professionalRespond(503); }
+// Acceptance by the local mail transport is not proof of inbox delivery.
+professionalRespond(200,true);

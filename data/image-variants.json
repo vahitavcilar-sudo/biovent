@@ -1,0 +1,370 @@
+{
+  "/images/editorial/biovent-cover.webp": {
+    "width": 358,
+    "height": 506,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/a887e39f8242-320.avif"
+      },
+      {
+        "width": 358,
+        "url": "/images/responsive/a887e39f8242-358.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/a887e39f8242-320.webp"
+      },
+      {
+        "width": 358,
+        "url": "/images/responsive/a887e39f8242-358.webp"
+      }
+    ]
+  },
+  "/images/editorial/digital-workflow.webp": {
+    "width": 868,
+    "height": 574,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/7004f15b9a47-320.avif"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/7004f15b9a47-480.avif"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/7004f15b9a47-720.avif"
+      },
+      {
+        "width": 868,
+        "url": "/images/responsive/7004f15b9a47-868.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/7004f15b9a47-320.webp"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/7004f15b9a47-480.webp"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/7004f15b9a47-720.webp"
+      },
+      {
+        "width": 868,
+        "url": "/images/responsive/7004f15b9a47-868.webp"
+      }
+    ]
+  },
+  "/images/editorial/smart-cover.webp": {
+    "width": 506,
+    "height": 358,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/c18e41953c48-320.avif"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/c18e41953c48-480.avif"
+      },
+      {
+        "width": 506,
+        "url": "/images/responsive/c18e41953c48-506.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/c18e41953c48-320.webp"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/c18e41953c48-480.webp"
+      },
+      {
+        "width": 506,
+        "url": "/images/responsive/c18e41953c48-506.webp"
+      }
+    ]
+  },
+  "/images/editorial/smart-technical.webp": {
+    "width": 1179,
+    "height": 835,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/2bb935157a89-320.avif"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/2bb935157a89-480.avif"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/2bb935157a89-720.avif"
+      },
+      {
+        "width": 960,
+        "url": "/images/responsive/2bb935157a89-960.avif"
+      },
+      {
+        "width": 1179,
+        "url": "/images/responsive/2bb935157a89-1179.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/2bb935157a89-320.webp"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/2bb935157a89-480.webp"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/2bb935157a89-720.webp"
+      },
+      {
+        "width": 960,
+        "url": "/images/responsive/2bb935157a89-960.webp"
+      },
+      {
+        "width": 1179,
+        "url": "/images/responsive/2bb935157a89-1179.webp"
+      }
+    ]
+  },
+  "/images/editorial/surface-detail.png": {
+    "width": 168,
+    "height": 168,
+    "avif": [
+      {
+        "width": 168,
+        "url": "/images/responsive/4afef75f3a05-168.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 168,
+        "url": "/images/responsive/4afef75f3a05-168.webp"
+      }
+    ]
+  },
+  "/images/products/monoblock/implant.webp": {
+    "width": 1280,
+    "height": 1280,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/19b65f47f48e-320.avif"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/19b65f47f48e-480.avif"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/19b65f47f48e-720.avif"
+      },
+      {
+        "width": 960,
+        "url": "/images/responsive/19b65f47f48e-960.avif"
+      },
+      {
+        "width": 1280,
+        "url": "/images/responsive/19b65f47f48e-1280.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/19b65f47f48e-320.webp"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/19b65f47f48e-480.webp"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/19b65f47f48e-720.webp"
+      },
+      {
+        "width": 960,
+        "url": "/images/responsive/19b65f47f48e-960.webp"
+      },
+      {
+        "width": 1280,
+        "url": "/images/responsive/19b65f47f48e-1280.webp"
+      }
+    ]
+  },
+  "/images/products/promx/implant.webp": {
+    "width": 547,
+    "height": 1070,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/61e77fa14496-320.avif"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/61e77fa14496-480.avif"
+      },
+      {
+        "width": 547,
+        "url": "/images/responsive/61e77fa14496-547.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/61e77fa14496-320.webp"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/61e77fa14496-480.webp"
+      },
+      {
+        "width": 547,
+        "url": "/images/responsive/61e77fa14496-547.webp"
+      }
+    ]
+  },
+  "/images/products/smart/implant.webp": {
+    "width": 342,
+    "height": 598,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/082a94788740-320.avif"
+      },
+      {
+        "width": 342,
+        "url": "/images/responsive/082a94788740-342.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/082a94788740-320.webp"
+      },
+      {
+        "width": 342,
+        "url": "/images/responsive/082a94788740-342.webp"
+      }
+    ]
+  },
+  "/images/products/smart/smart-implant-master.webp": {
+    "width": 1320,
+    "height": 1153,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/9ec98f24e05d-320.avif"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/9ec98f24e05d-480.avif"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/9ec98f24e05d-720.avif"
+      },
+      {
+        "width": 960,
+        "url": "/images/responsive/9ec98f24e05d-960.avif"
+      },
+      {
+        "width": 1280,
+        "url": "/images/responsive/9ec98f24e05d-1280.avif"
+      },
+      {
+        "width": 1320,
+        "url": "/images/responsive/9ec98f24e05d-1320.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/9ec98f24e05d-320.webp"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/9ec98f24e05d-480.webp"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/9ec98f24e05d-720.webp"
+      },
+      {
+        "width": 960,
+        "url": "/images/responsive/9ec98f24e05d-960.webp"
+      },
+      {
+        "width": 1280,
+        "url": "/images/responsive/9ec98f24e05d-1280.webp"
+      },
+      {
+        "width": 1320,
+        "url": "/images/responsive/9ec98f24e05d-1320.webp"
+      }
+    ]
+  },
+  "/images/products/zygoma/implant.webp": {
+    "width": 1000,
+    "height": 2000,
+    "avif": [
+      {
+        "width": 320,
+        "url": "/images/responsive/8028331a4642-320.avif"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/8028331a4642-480.avif"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/8028331a4642-720.avif"
+      },
+      {
+        "width": 960,
+        "url": "/images/responsive/8028331a4642-960.avif"
+      },
+      {
+        "width": 1000,
+        "url": "/images/responsive/8028331a4642-1000.avif"
+      }
+    ],
+    "webp": [
+      {
+        "width": 320,
+        "url": "/images/responsive/8028331a4642-320.webp"
+      },
+      {
+        "width": 480,
+        "url": "/images/responsive/8028331a4642-480.webp"
+      },
+      {
+        "width": 720,
+        "url": "/images/responsive/8028331a4642-720.webp"
+      },
+      {
+        "width": 960,
+        "url": "/images/responsive/8028331a4642-960.webp"
+      },
+      {
+        "width": 1000,
+        "url": "/images/responsive/8028331a4642-1000.webp"
+      }
+    ]
+  }
+}

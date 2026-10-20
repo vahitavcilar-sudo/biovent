@@ -1,0 +1,3 @@
+import {basePath} from '@/lib/paths';
+import type {MetadataRoute} from 'next';import {siteUrl} from '@/lib/seo';import {locales} from '@/lib/i18n';import {products} from '@/data/products';export const dynamic='force-static';
+export default function sitemap():MetadataRoute.Sitemap{const paths=['','/products','/about','/resources','/distributors','/inquiry','/privacy','/legal',...products.map(p=>'/products/'+p.id)];return locales.flatMap(l=>paths.map(path=>({url:`${siteUrl}${basePath}/${l}${path}/`,alternates:{languages:Object.fromEntries([...locales.map(x=>[x,`${siteUrl}${basePath}/${x}${path}/`]),['x-default',`${siteUrl}${basePath}/en${path}/`]])}})))}

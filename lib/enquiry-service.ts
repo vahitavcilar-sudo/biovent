@@ -1,0 +1,5 @@
+import type {ProductId} from '@/data/products';
+export interface EnquiryPayload{company:string;contactName:string;email:string;website:string;country:string;phone:string;experience:string;products:ProductId[];locale:string;consent:boolean;honeypot:string}
+export type SubmissionResult={kind:'preview'}|{kind:'accepted';reference?:string}|{kind:'error'};
+export const enquiryEndpoint=process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT||'';
+export async function submitDistributorEnquiry(payload:EnquiryPayload):Promise<SubmissionResult>{if(payload.honeypot)return {kind:'error'};if(!enquiryEndpoint)return {kind:'preview'};try{const response=await fetch(enquiryEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),credentials:'omit',signal:AbortSignal.timeout(15000)});if(!response.ok)return {kind:'error'};const body:unknown=await response.json();if(!body||typeof body!=='object'||!('accepted' in body)||body.accepted!==true)return {kind:'error'};return {kind:'accepted',reference:'reference'in body&&typeof body.reference==='string'?body.reference:undefined};}catch{return {kind:'error'}}}

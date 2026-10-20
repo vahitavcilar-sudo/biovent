@@ -1,0 +1,22 @@
+BIOVENT — GELİŞTİRİLMİŞ SİTE ÖNİZLEMESİ
+
+1. ZIP dosyasının tamamını bir klasöre çıkarın.
+2. index.html dosyasına çift tıklayın.
+3. Chrome veya Edge ile açabilirsiniz. Kurulum gerekmez.
+
+assets klasörünü ve diğer site dosyalarını index.html ile aynı yerde tutun.
+Dil seçimi sağ üsttedir: EN / DE / TR / العربية.
+
+Hazır ekranlar: ana sayfa, implant sistemleri, dört ayrı ürün sayfası,
+firma tanıtımı, katalog kütüphanesi ve distribütörlük talebi.
+
+Form önizlemedir: talebi göndermez. Üç adımda hazırlanır ve metin dosyası
+olarak indirilebilir. Gerçek satış ekibine bağlantı henüz yapılmadı.
+
+Orijinal logo kullanılıyor. Açılış Smart Implant üzerine kuruldu.
+Mesajdaki Smart fotoğrafının özgün dosyası erişime sunulmadığından şimdilik
+BIOSmart kataloğundaki gerçek ürün görseli kullanıldı. Fotoğrafı dosya olarak
+paylaştığınızda hazırlanmış koyu fotoğraf yerleşimine eklenebilir.
+
+Yayına alınmış bir site değildir. Teknik dokümanlar orijinal İngilizce PDF'lerdir.
+Dil ve ürün metinleri yayın öncesinde firmanız tarafından kontrol edilmelidir.

@@ -1,0 +1,996 @@
+{
+  "smart": [
+    {
+      "productId": "smart",
+      "diameter": 3.5,
+      "length": 8,
+      "source": {
+        "documentId": "smart",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 3.5,
+      "length": 10,
+      "source": {
+        "documentId": "smart",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 3.5,
+      "length": 12.5,
+      "source": {
+        "documentId": "smart",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4,
+      "length": 5,
+      "source": {
+        "documentId": "smart",
+        "page": 8
+      },
+      "verification": "catalogue-listed",
+      "kind": "short"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4,
+      "length": 8,
+      "source": {
+        "documentId": "smart",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4,
+      "length": 10,
+      "source": {
+        "documentId": "smart",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4,
+      "length": 12.5,
+      "source": {
+        "documentId": "smart",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4,
+      "length": 15,
+      "source": {
+        "documentId": "smart",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4.5,
+      "length": 5,
+      "source": {
+        "documentId": "smart",
+        "page": 8
+      },
+      "verification": "catalogue-listed",
+      "kind": "short"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4.5,
+      "length": 8,
+      "source": {
+        "documentId": "smart",
+        "page": 6
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4.5,
+      "length": 10,
+      "source": {
+        "documentId": "smart",
+        "page": 6
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4.5,
+      "length": 12.5,
+      "source": {
+        "documentId": "smart",
+        "page": 6
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 4.5,
+      "length": 15,
+      "source": {
+        "documentId": "smart",
+        "page": 6
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 5.5,
+      "length": 5,
+      "source": {
+        "documentId": "smart",
+        "page": 8
+      },
+      "verification": "catalogue-listed",
+      "kind": "short"
+    },
+    {
+      "productId": "smart",
+      "diameter": 5.5,
+      "length": 8,
+      "source": {
+        "documentId": "smart",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 5.5,
+      "length": 10,
+      "source": {
+        "documentId": "smart",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "smart",
+      "diameter": 5.5,
+      "length": 12.5,
+      "source": {
+        "documentId": "smart",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    }
+  ],
+  "promx": [
+    {
+      "productId": "promx",
+      "diameter": 6.0,
+      "length": 6,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 66"
+    },
+    {
+      "productId": "promx",
+      "diameter": 6.0,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 86"
+    },
+    {
+      "productId": "promx",
+      "diameter": 6.0,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 106"
+    },
+    {
+      "productId": "promx",
+      "diameter": 6.0,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1156"
+    },
+    {
+      "productId": "promx",
+      "diameter": 6.0,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 136"
+    },
+    {
+      "productId": "promx",
+      "diameter": 6.0,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 166"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.3,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 833"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.3,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1033"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.3,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 11533"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.3,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1333"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.3,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1633"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.75,
+      "length": 6,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 6375"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.75,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 8375"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.75,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 10375"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.75,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 115375"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.75,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 13375"
+    },
+    {
+      "productId": "promx",
+      "diameter": 3.75,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 16375"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.2,
+      "length": 6,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 642"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.2,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 842"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.2,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1042"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.2,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 11542"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.2,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1342"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.2,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1642"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.7,
+      "length": 6,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 647"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.7,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 847"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.7,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1047"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.7,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 11547"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.7,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1347"
+    },
+    {
+      "productId": "promx",
+      "diameter": 4.7,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1647"
+    },
+    {
+      "productId": "promx",
+      "diameter": 5.2,
+      "length": 6,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 652"
+    },
+    {
+      "productId": "promx",
+      "diameter": 5.2,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 852"
+    },
+    {
+      "productId": "promx",
+      "diameter": 5.2,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1052"
+    },
+    {
+      "productId": "promx",
+      "diameter": 5.2,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 11552"
+    },
+    {
+      "productId": "promx",
+      "diameter": 5.2,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1352"
+    },
+    {
+      "productId": "promx",
+      "diameter": 5.2,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 4
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CMX 1652"
+    }
+  ],
+  "monoblock": [
+    {
+      "productId": "monoblock",
+      "diameter": 3.3,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.3,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.3,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.3,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.3,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.75,
+      "length": 6,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 6375"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.75,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 8375"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.75,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 10375"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.75,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 115375"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.75,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 13375"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 3.75,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 16375"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.2,
+      "length": 6,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 642"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.2,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 842"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.2,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 1042"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.2,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 11542"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.2,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 1342"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.2,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 1642"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.7,
+      "length": 6,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 647"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.7,
+      "length": 8,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 847"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.7,
+      "length": 10,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 1047"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.7,
+      "length": 11.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 11547"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.7,
+      "length": 13,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 1347"
+    },
+    {
+      "productId": "monoblock",
+      "diameter": 4.7,
+      "length": 16,
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "MX 1647"
+    }
+  ],
+  "zygoma": [
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 35,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI3542"
+    },
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 37.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI3742"
+    },
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 40,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI4042"
+    },
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 42.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI4242"
+    },
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 45,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI4542"
+    },
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 47.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI4742"
+    },
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 50,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI5042"
+    },
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 52.5,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI5242"
+    },
+    {
+      "productId": "zygoma",
+      "diameter": 4.2,
+      "length": 55,
+      "source": {
+        "documentId": "portfolio",
+        "page": 7
+      },
+      "verification": "catalogue-listed",
+      "kind": "standard",
+      "reference": "CAITI5542"
+    }
+  ]
+}

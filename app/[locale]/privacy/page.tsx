@@ -1,0 +1,3 @@
+import {getCopy} from '@/lib/i18n';import {resolveLocale} from '@/lib/locale';import {pageMetadata} from '@/lib/seo';import {PageIntro} from '@/components/sections/shared';
+export async function generateMetadata({params}:{params:Promise<{locale:string}>}){return pageMetadata(await resolveLocale(params),'privacy')}
+export default async function Page({params}:{params:Promise<{locale:string}>}){const l=await resolveLocale(params),c=getCopy(l);return <><PageIntro eyebrow={c.privacy} title={c.privacyTitle} copy={c.privacyMemory}/><section className="container legal-copy">{(process.env.NEXT_PUBLIC_ENQUIRY_ENDPOINT||process.env.NEXT_PUBLIC_PROFESSIONAL_ENQUIRY_ENDPOINT)&&<p>{c.privacyLive}</p>}<p>{c.legalPending}</p></section></>}

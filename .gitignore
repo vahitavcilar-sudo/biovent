@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+artifacts/
+coverage/
+__pycache__/
+*.pyc
+
+.next-export/
+
+deployment/wordpress-hosting/public_html/
+deployment/wordpress-hosting/draft-public_html/
+deployment/wordpress-hosting/draft-subfolder/

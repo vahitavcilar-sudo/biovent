@@ -1,0 +1,123 @@
+# Biovent V11 — international dental implant website
+
+**V11 LOCAL TEST:** the professional Smart original is now imported and checksum-verified. The lossless PNG from `smart-foto.zip` is the master across primary Smart placements; JPEG and PNG originals are preserved in `assets/smart-user-originals/`. The Windows test ZIP runs the actual site without Node.js/Python. Forms are preview-only; company legal/contact details and real hosting still need validation. No live website publication was performed.
+
+
+Next.js App Router, React, strict TypeScript; English, German, Turkish and Arabic with server-rendered RTL. Corrected original PDF vector logo, a Smart-first editorial homepage, scroll-controlled engineering story, larger product rows and authentic document imagery. Four product families, technical documentation and distributor enquiries.
+
+V11 adds shared technical dossiers and authentic-image inspection for all four systems, 84 validated catalogue configurations, a separate professional information/quotation workflow, focused comparison and searchable resources. Smart Ø5.0 has been corrected to Ø5.5 with source evidence; unresolved configurations are held. See `V11_CHANGELOG.md`, `V11_IMPLEMENTATION_REPORT.md`, `V11_PRODUCT_DATA_AUDIT.md` and `V11_QA_REPORT.md`. Exact Windows instructions are in `V11_LOCAL_RUNNING.md`; static hosting notes are in `V11_DEPLOYMENT.md`.
+
+Extract `biovent-v11-windows-test.zip` and open `SITEYI-AC.bat` for a ready-to-test site. Professional and distributor forms remain preview-only without separate configured receiving services. New Promx source imagery and approved CAD/manufacturing/clinical documents remain dependencies, not completed assets.
+
+## Start
+
+Requires Node.js 20.9+ and npm. Use the existing checkout; no additional worktree is necessary.
+
+```sh
+cd /workspace/biovent
+npm ci
+npm run dev -- --port 3000
+```
+
+Production:
+
+```sh
+npm run typecheck
+npm run build
+npm run start -- --port 3000
+```
+
+Run a local HTTP request against `/en/`, `/tr/` or `/ar/` to verify readiness. Opening a source HTML file directly is not supported. The cloud onboarding interface does not provide a public browser preview URL. Screenshots under `artifacts/screenshots/` provide a reviewable preview; hosting the app on a Next.js-compatible platform supplies a public address. The existing company website has not been changed or published.
+
+## Routes
+
+`/{locale}/`, `products/`, `products/smart/`, `products/promx/`, `products/monoblock/`, `products/zygoma/`, `resources/`, `about/`, `distributors/`, `privacy/`, `legal/`. Locale is `en`, `de`, `tr` or `ar`. All 44 localized routes are prerendered. Root redirects to English. Locale switching preserves the current route and enquiry product query. Enquiry drafts survive language changes/reloads in the same tab through session storage; closing the tab removes them.
+
+## Content and source truth
+
+- `content/locales/`: translated copy; `lib/i18n.ts`: additional translated interface copy.
+- `data/products.ts`, `data/references.json`: product records and exact reference mappings.
+- `data/documents.ts`: downloadable original PDF metadata.
+- `data/company.ts`: company configuration, deliberately empty unverified legal/contact values and optional original Smart hero photograph path.
+- `public/images/`: optimized authentic images; `public/documents/`: unchanged original PDFs.
+- `assets/`: preserved source assets; `legacy/`: complete pre-migration application files.
+- `AUDIT.md`: migration decisions and catalogue ambiguities.
+
+Approved mappings: Smart → BIOSmart; Promx → VTX Two Piece; Monoblock → Compressive; Zygoma → Zygomatic. Promx reference values come from Biovent page 4; Zygoma from page 7. Monoblock page 5 contains a duplicated 3.3 mm row; the site does not manufacture a corrected complete matrix. Smart engineering copy follows BIOSmart page 3; DXL-specific statements are not assumed to describe Smart.
+
+The professional Smart photograph was supplied in `smart-foto.zip`: both options are 1320 × 1153. The PNG was chosen as a lossless master and imported byte-for-byte with SHA-256 a56f39ae5f888b6b957082c2f72df6a02ece10663dadcfaf092c30b01e0a8d67. `data/smart-asset.json` is the single authoritative mapping for every Smart visual; derivatives only resize/encode, without enlargement or geometry/background alteration.
+
+The old vector extraction accidentally reversed rectangular subpath winding in several letters. V4 re-extracts the exact original PDF paths, preserving compound-path orientation, ancestor opacity and clipping. This corrects the damaged logo without redrawing/recolouring. Master is `public/brand/biovent/logo-primary.svg`, source copy is `assets/biovent-logo-original-pdf.svg`, reusable component is `components/brand/brand-logo.tsx`. No unapproved dark variant exists; the authentic logo is used on a calm light header and the integrated full-width light brand strip above the graphite footer.
+
+Static responsive AVIF/WebP derivatives are generated by `npm run assets`; all primary raster components use `<picture>`/srcset/sizes, without the Next image optimization server. Original source files and genuine PDF downloads remain unchanged. Arabic core font preserves U+0600–06FF, all used Arabic characters, GSUB/GPOS shaping and variable weight 100–900. It reduces the initial file to 67,764 bytes. Extended Arabic remains available as a lazy unicode-range face. The unchanged original is preserved in `assets/fonts/`; regeneration uses `scripts/subset-arabic-font.py` (fonttools + brotli), with metadata in `data/arabic-font.json`. Latin font loads when used instead of competing with the primary Arabic preload.
+
+## Enquiry integration
+
+Without `NEXT_PUBLIC_ENQUIRY_ENDPOINT`, the form operates in explicit preview mode: it never sends an enquiry and offers a text download. No contact email or successful delivery is invented.
+
+Before a production build, configure the public HTTPS endpoint (never put a secret in a `NEXT_PUBLIC_` variable). The browser POSTs JSON with company, contactName, email, website, country, phone, experience, products, locale, consent and honeypot. `lib/enquiry-service.ts` isolates transport.
+
+Success requires an HTTP success status **and** `{ "accepted": true, "reference": "optional-reference" }`. Invalid responses, network errors and timeout produce a retry/download error state. Server ownership, rate limiting, input validation, spam protection, data retention and actual CRM/email delivery belong to the receiving service. This adapter has been verified with mocks; a real delivery service is not configured or tested.
+
+Before publication supply verified company identity, postal address, contact details, data-controller and retention terms. Review all four translations and medical content with the company. Add certificate documents only after verifying their applicability. `SITE_URL` defaults to the company domain; set it for the actual production hostname before building canonical, hreflang and sitemap metadata.
+
+## Validation
+
+```sh
+npm run typecheck
+npm run export
+npm run package:draft
+python scripts/serve-deployment.py --port 3100
+# In another terminal:
+npm test
+npm run test:a11y
+npm run test:service
+npm run test:motion
+node scripts/capture-v6.cjs
+# After the other browser suites have finished:
+npm run performance
+```
+
+Browser scripts expect Chromium at `/usr/bin/chromium` and the exact deployed-folder HTTP server on port 3100; use `BIOVENT_CHROMIUM` or `BIOVENT_TEST_URL` to override. Run Lighthouse after other browser suites finish to avoid CPU contention. Lighthouse uses mobile simulated throttling; lab results are not field Core Web Vitals or measured INP. See `VALIDATION.md` and generated JSON/HTML reports.
+
+## Static hosting option
+
+```sh
+npm run export
+```
+
+Writes `out/`. Stop your production server before exporting: Next.js also uses `.next/` during export. Run `npm run build` and restart the production server afterwards if continuing Node validation. Upload the entire `out/` directory to a static HTTP host. Original web-optimized assets are used directly without the Next image service in this mode; production Node hosting supports responsive AVIF/WebP optimization. The external enquiry service adapter works in either mode after build-time endpoint configuration. Do not confuse an exported build with a published site.
+
+## Design
+
+Graphite, red and titanium; self-hosted Inter and Noto Sans Arabic; large product-led editorial sections, technical grids, responsive navigation, accessible tabs and dimension selectors. Reduced motion disables animation. No analytics, third-party font calls or non-essential cookies are installed.
+
+## WordPress hosting
+
+See `DEPLOY-WORDPRESS-HOSTING.md` for root replacement, preservation of existing WordPress, subdirectory/subdomain builds, SSL, cPanel/SFTP, caching, form adapter and rollback. `NEXT_PUBLIC_BASE_PATH=/biovent` must be supplied both during export and packaging for subfolder hosting. Asset paths, font URLs, documents and localized SEO use the same base. No live upload is authorized or performed. Optional PHP adapter remains disabled outside public output.
+
+To review the exact draft export locally:
+
+```sh
+npm run export
+npm run package:draft
+python scripts/serve-deployment.py --port 3100
+# Separate terminal:
+npm test
+npm run test:a11y
+node scripts/capture-v6.cjs
+```
+
+The local HTTP review server serves the exact folder and uses a root redirect/custom 404; it does not execute PHP or validate Apache modules. The Smart original is present. Run the final checks with this asset; real-host Apache/PHP behavior and real enquiry delivery remain separate, unverified deployment work.
+
+## V7 media and interaction
+
+Smart inspection, single-object product story, coordinated collection motion, localized global motion pause, native approved-video lifecycle and genuine-frame-only rotation architecture. All ten media slots currently use authentic still images; no OEM films or genuine angle sequence were supplied. QA browser recordings are separate from production media. See EXPERIENCE-V7.md, PRODUCT-MEDIA-REQUIREMENTS.md and VIDEO-PERFORMANCE-REPORT.md.
+
+## V8 digital showroom
+
+Four-product cinematic hero, optimized static Smart first frame, named roving product tabs, native horizontal swipe, interruptible WAAPI scenes and controlled8.5-second autoplay. Click/swipe makes the page manual until explicit resume. Hover/focus, hidden/offscreen, menus/routes and reduced motion/data pause it. Default Smart on route return. Server-rendered first frame and direct product links remain usable without JavaScript. No new carousel dependency.
+
+Continuous Smart framing, four genuine products in one signature composition, selected-system comparison, three documented-workflow review steps and contextual product enquiries. Repeated homepage portfolio/brand/surface blocks removed; full details remain on product routes. Product mega-menu and source-only resource filters preserved; references subnav opens the actual matrix.
+
+QA: npm test, npm run test:a11y, npm run test:motion, npm run test:service, node tests/showroom.cjs, node tests/showroom-lifecycle.cjs, node tests/showroom-accessibility.cjs. Serve the exact exported draft with scripts/serve-deployment.py before browser suites. Browser recordings are QA artifacts only. Physical Windows/mobile browsers and real Natro hosting remain outside this environment.

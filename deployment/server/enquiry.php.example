@@ -1,0 +1,62 @@
+<?php
+// Optional standalone HTTPS endpoint. NOT enabled or included in the public static ZIP.
+// Configure environment/server settings before renaming to enquiry.php.
+declare(strict_types=1);
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
+header('X-Content-Type-Options: nosniff');
+function respond(int $status, bool $accepted = false): never {
+    http_response_code($status);
+    echo json_encode(['accepted' => $accepted]);
+    exit;
+}
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Allow: POST'); respond(405); }
+$allowedOrigin = rtrim((string)getenv('BIOVENT_ALLOWED_ORIGIN'), '/');
+$recipient = (string)getenv('BIOVENT_ENQUIRY_TO');
+$sender = (string)getenv('BIOVENT_ENQUIRY_FROM');
+$rateDirectory = (string)getenv('BIOVENT_RATE_DIRECTORY');
+if (!$allowedOrigin || !filter_var($recipient, FILTER_VALIDATE_EMAIL) || !filter_var($sender, FILTER_VALIDATE_EMAIL)
+    || !is_dir($rateDirectory) || !is_writable($rateDirectory)) { respond(503); }
+$rateRoot = realpath($rateDirectory);
+$documentRoot = realpath((string)($_SERVER['DOCUMENT_ROOT'] ?? ''));
+if (!$rateRoot || ($documentRoot && ($rateRoot === $documentRoot || str_starts_with($rateRoot, $documentRoot . DIRECTORY_SEPARATOR)))) { respond(503); }
+// Same-origin JSON requests: form cannot be used by a cross-origin browser without CORS.
+if (rtrim((string)($_SERVER['HTTP_ORIGIN'] ?? ''), '/') !== $allowedOrigin) { respond(403); }
+if (!str_starts_with(strtolower((string)($_SERVER['CONTENT_TYPE'] ?? '')), 'application/json')) { respond(415); }
+if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 16384) { respond(413); }
+$raw = file_get_contents('php://input', false, null, 0, 16385);
+if ($raw === false || strlen($raw) > 16384) { respond(413); }
+try { $data = json_decode($raw, true, 16, JSON_THROW_ON_ERROR); } catch (Throwable $e) { respond(400); }
+if (!is_array($data) || !empty($data['honeypot']) || ($data['consent'] ?? false) !== true) { respond(400); }
+$fields = [];
+foreach (['company'=>160,'contactName'=>160,'email'=>254,'website'=>254,'country'=>160,'phone'=>160,'experience'=>2000] as $key=>$limit) {
+    if (!isset($data[$key]) || !is_string($data[$key]) || strlen($data[$key]) > $limit * 4) { respond(400); }
+    $value = trim(str_replace("\0", '', $data[$key]));
+    if ($key !== 'experience' && preg_match('/[\r\n]/', $value)) { respond(400); }
+    $fields[$key] = $value;
+}
+if (!$fields['company'] || !$fields['contactName'] || !$fields['country'] || !filter_var($fields['email'], FILTER_VALIDATE_EMAIL)) { respond(400); }
+if ($fields['website'] && (!filter_var($fields['website'], FILTER_VALIDATE_URL) || !in_array(parse_url($fields['website'], PHP_URL_SCHEME), ['http','https'], true))) { respond(400); }
+if (!in_array($data['locale'] ?? null, ['en','de','tr','ar'], true) || !is_array($data['products'] ?? null) || count($data['products']) < 1 || count($data['products']) > 4) { respond(400); }
+foreach ($data['products'] as $product) { if (!in_array($product, ['smart','promx','monoblock','zygoma'], true)) { respond(400); } }
+// Rate key uses the server's peer IP, never an untrusted forwarding header.
+$key = hash('sha256', (string)($_SERVER['REMOTE_ADDR'] ?? 'unknown'));
+$file = fopen(rtrim($rateDirectory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $key . '.json', 'c+');
+if (!$file || !flock($file, LOCK_EX)) { respond(503); }
+try {
+    $previous = json_decode(stream_get_contents($file) ?: '{}', true) ?: [];
+    $now = time();
+    $hits = array_values(array_filter($previous['hits'] ?? [], fn($stamp) => is_int($stamp) && $stamp > $now - 3600));
+    if (count($hits) >= 5 || ($hits && max($hits) > $now - 60)) { header('Retry-After: 60'); respond(429); }
+    $hits[] = $now;
+    rewind($file); ftruncate($file, 0); fwrite($file, json_encode(['hits'=>$hits])); fflush($file);
+} finally { flock($file, LOCK_UN); fclose($file); }
+$body = "Biovent distributor enquiry\n\n";
+foreach ($fields as $name => $value) { $body .= $name . ': ' . $value . "\n"; }
+$body .= 'Products: ' . implode(', ', array_unique($data['products'])) . "\nLocale: " . $data['locale'] . "\n";
+// Recipient and sender come only from trusted server configuration. No credentials in frontend code.
+$headers = ['From' => $sender, 'Reply-To' => $fields['email'], 'Content-Type' => 'text/plain; charset=UTF-8'];
+try { $accepted = mail($recipient, 'Biovent distributor enquiry', $body, $headers); } catch (Throwable $e) { $accepted = false; }
+if (!$accepted) { respond(503); }
+// mail() true means the local mail transport accepted the message, not confirmed inbox delivery.
+respond(200, true);
