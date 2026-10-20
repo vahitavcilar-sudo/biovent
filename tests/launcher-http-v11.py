@@ -50,5 +50,5 @@ report = {'passed': True, 'buildId': (repo / '.next/BUILD_ID').read_text().strip
           'gzipQualityAndHead': True, 'pdfRange206': True,
           'loopbackOnly': True, 'sharedLauncherExecutedOn': 'Linux',
           'windowsExecuted': False}
-(repo / 'artifacts/v11/launcher-http.json').write_text(json.dumps(report, indent=2))
+(repo / ('artifacts/v'+json.loads((repo/'package.json').read_text())['version'].split('.')[0]+'/launcher-http.json')).write_text(json.dumps(report, indent=2))
 print(json.dumps(report, indent=2))

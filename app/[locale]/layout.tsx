@@ -3,8 +3,9 @@ import {motionTokens} from '@/lib/motion';
 import {PageTransition} from '@/components/motion/page-transition';
 import {RevealRuntime} from '@/components/motion/reveal-runtime';
 import {asset} from '@/lib/paths';
-import type {Metadata} from 'next';import {Suspense,type ReactNode,type CSSProperties} from 'react';import {notFound} from 'next/navigation';import localFont from 'next/font/local';import {isLocale,locales,getCopy} from '@/lib/i18n';import {siteUrl} from '@/lib/seo';import {Header} from '@/components/layout/header';import {Footer} from '@/components/layout/footer';import {DraftProvider} from '@/components/forms/draft-provider';import '@/styles/global.css';import '@/styles/v4.css';import '@/styles/v5.css';import '@/styles/v6.css';import '@/styles/v7.css';import '@/styles/v8.css';import '@/styles/v11.css';import '@/styles/v11-resources.css';import '@/styles/v11-product.css';import '@/styles/v11-inquiry.css';
-const inter=localFont({src:'../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2',variable:'--font-inter',display:'swap',weight:'100 900',preload:false});
+import type {Metadata} from 'next';import {Suspense,type ReactNode,type CSSProperties} from 'react';import {notFound} from 'next/navigation';import localFont from 'next/font/local';import {isLocale,locales,getCopy} from '@/lib/i18n';import {siteUrl} from '@/lib/seo';import {Header} from '@/components/layout/header';import {Footer} from '@/components/layout/footer';import {DraftProvider} from '@/components/forms/draft-provider';
+import '@/styles/system/index.css';
+const inter=localFont({src:'../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2',variable:'--font-inter',display:'swap',weight:'100 900',preload:true});
 const interExt=localFont({src:'../../node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2',variable:'--font-inter-ext',display:'swap',weight:'100 900',preload:false,declarations:[{prop:'unicode-range',value:'U+0100-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF'}]});
 export const metadata:Metadata={metadataBase:new URL(siteUrl),applicationName:'Biovent',icons:{icon:asset('/brand/biovent/logo-primary.svg')}};
 export function generateStaticParams(){return locales.map(locale=>({locale}))}

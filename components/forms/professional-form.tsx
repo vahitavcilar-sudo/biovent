@@ -1,5 +1,5 @@
 'use client';
-import {useEffect,useRef,useState,type FormEvent} from 'react';
+import {Suspense,useEffect,useRef,useState,type FormEvent} from 'react';
 import {useSearchParams} from 'next/navigation';
 import Link from 'next/link';
 import {products,findProduct,type ProductId} from '@/data/products';
@@ -16,13 +16,15 @@ function updateIntentURL(draft:ProfessionalDraft){
  if(location.pathname+location.search+location.hash!==url)window.history.replaceState(window.history.state,'',url);
  return params.toString();
 }
+// Keep the form server-rendered; only URL intent needs the client-only search hook.
+function ProfessionalIntent({onChange}:{onChange:(value:string)=>void}){const key=useSearchParams().toString();useEffect(()=>onChange(key),[key,onChange]);return null}
 export function ProfessionalForm({locale}:{locale:Locale}){
- const c=getInquiryCopy(locale),query=useSearchParams(),queryKey=query.toString();
+ const c=getInquiryCopy(locale);const [queryKey,setQueryKey]=useState<string|null>(null);
  const [draft,setDraft]=useState<ProfessionalDraft>({...initialProfessionalDraft});const [ready,setReady]=useState(false);const [errors,setErrors]=useState<ProfessionalErrors>({});const [invalidIncoming,setInvalidIncoming]=useState(false);const [pending,setPending]=useState(false);const [result,setResult]=useState<ProfessionalResult|null>(null);
  const mounted=useRef(true);useEffect(()=>{mounted.current=true;return()=>{mounted.current=false}},[]);
  const draftRef=useRef(draft);draftRef.current=draft;
  const loaded=useRef(false),lastQuery=useRef(''),summary=useRef<HTMLDivElement>(null),resultNode=useRef<HTMLDivElement>(null);
- useEffect(()=>{if(!loaded.current){loaded.current=true;let stored:unknown;try{stored=JSON.parse(sessionStorage.getItem(professionalStorageKey)||'null')}catch{}const intent=applyProfessionalIntent(new URLSearchParams(queryKey),restoreProfessionalDraft(stored));setDraft(intent.draft);setInvalidIncoming(intent.invalid);lastQuery.current=updateIntentURL(intent.draft);setReady(true)}else if(queryKey!==lastQuery.current){const intent=applyProfessionalIntent(new URLSearchParams(queryKey),draftRef.current);setDraft(intent.draft);setInvalidIncoming(intent.invalid);lastQuery.current=updateIntentURL(intent.draft);setResult(null)}},[queryKey]);
+ useEffect(()=>{if(queryKey===null)return;if(!loaded.current){loaded.current=true;let stored:unknown;try{stored=JSON.parse(sessionStorage.getItem(professionalStorageKey)||'null')}catch{}const intent=applyProfessionalIntent(new URLSearchParams(queryKey),restoreProfessionalDraft(stored));setDraft(intent.draft);setInvalidIncoming(intent.invalid);lastQuery.current=updateIntentURL(intent.draft);setReady(true)}else if(queryKey!==lastQuery.current){const intent=applyProfessionalIntent(new URLSearchParams(queryKey),draftRef.current);setDraft(intent.draft);setInvalidIncoming(intent.invalid);lastQuery.current=updateIntentURL(intent.draft);setResult(null)}},[queryKey]);
  useEffect(()=>{if(ready)try{sessionStorage.setItem(professionalStorageKey,JSON.stringify(draft))}catch{}},[draft,ready]);
  const product=draft.product?findProduct(draft.product):undefined,variants=draft.product?getVariants(draft.product):[],diameters=draft.product?professionalDiameters(draft.product):[];
  const lengths=variants.filter(v=>String(v.diameter)===draft.diameter).map(v=>v.length);const variant=draft.product?resolveVariant(draft.product,draft.diameter,draft.length):undefined;
@@ -34,7 +36,7 @@ export function ProfessionalForm({locale}:{locale:Locale}){
  function field(key:'contactName'|'company'|'country'|'email'|'phone'|'quantity',required:boolean,type='text'){
  const error=errors[key];return <label className="form-field" htmlFor={`professional-${key}`} key={key}><span>{c[key]} {required&&<span aria-hidden="true">*</span>}</span><input id={`professional-${key}`} name={key} type={type} required={required} autoComplete={{contactName:'name',company:'organization',country:'country-name',email:'email',phone:'tel',quantity:'off'}[key]} dir={key==='email'||key==='phone'||key==='quantity'?'ltr':undefined} maxLength={key==='email'?254:key==='quantity'?6:160} min={key==='quantity'?1:undefined} max={key==='quantity'?100000:undefined} step={key==='quantity'?1:undefined} value={draft[key]} disabled={pending} onChange={event=>edit(key,event.target.value)} aria-invalid={!!error} aria-describedby={error?`professional-error-${key}`:undefined}/>{error&&<span className="field-error" id={`professional-error-${key}`}>{errorMessage(error)}</span>}</label>
  }
- return <div className="professional-enquiry-card" data-professional-ready={ready}>
+ return <><Suspense fallback={null}><ProfessionalIntent onChange={setQueryKey}/></Suspense><div className="professional-enquiry-card" data-professional-ready={ready}>
  <div className={`professional-mode ${professionalEndpoint?'is-live':'is-preview'}`}><span aria-hidden="true"/><p>{professionalEndpoint?c.liveDetail:c.preview}</p></div>
  {!professionalEndpoint&&<p className="professional-preview-copy">{c.previewDetail}</p>}
  <form onSubmit={submit} noValidate aria-busy={pending} aria-label={c.formTitle}>
@@ -54,5 +56,5 @@ export function ProfessionalForm({locale}:{locale:Locale}){
  {result?.kind!=='accepted'&&<div className="professional-submit"><button className="button" type="submit" disabled={pending||!ready}>{pending?c.sending:professionalEndpoint?c.send:c.review}<Arrow/></button><p>{c.saveNote}</p></div>}
  {result&&<div ref={resultNode} tabIndex={-1} className={`submission-result ${result.kind}`} role={result.kind==='error'?'alert':'status'}><p>{result.kind==='accepted'?c.accepted:result.kind==='preview'?c.previewResult:c.failed}</p>{result.kind==='accepted'&&result.reference&&<p>{c.submittedReference}: <code>{result.reference}</code></p>}{result.kind!=='accepted'?<button className="text-button" type="button" onClick={download}>{c.download}<Arrow down/></button>:<button className="text-button" type="button" onClick={()=>{setDraft({...initialProfessionalDraft});setErrors({});setResult(null);setInvalidIncoming(false);lastQuery.current=updateIntentURL(initialProfessionalDraft)}}>{c.reset}</button>}</div>}
  </form>
- </div>
+ </div></>
 }

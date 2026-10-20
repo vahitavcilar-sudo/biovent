@@ -6,6 +6,8 @@ import {StaticImage} from '@/components/ui/static-image';
 import {getV11ProductCopy} from '@/lib/v11-product-copy';
 import {Arrow} from '@/components/ui/primitives';
 import {clamp} from '@/lib/motion';
+import {getV12Copy} from '@/lib/v12-copy';
+import {MotionToggle} from '@/components/media/motion-toggle';
 
 export interface ViewerFeature {id:string;title:string;explanation:string;sourceUrl:string;sourceLabel:string;origin:readonly [number,number];zoom:number;hotspot?:readonly [number,number]}
 export function TechnicalViewer({product,locale,features}:{product:Product;locale:Locale;features:readonly ViewerFeature[]}){
@@ -15,20 +17,21 @@ export function TechnicalViewer({product,locale,features}:{product:Product;local
  useEffect(()=>{const el=viewport.current;if(!el)return;const update=()=>{const ratio=product.imageWidth/product.imageHeight,w=Math.min(el.clientWidth,el.clientHeight*ratio);setSize({width:w,height:w/ratio});setPan({x:0,y:0});setReady(true)};update();const observer=new ResizeObserver(update);observer.observe(el);return()=>observer.disconnect()},[product.imageWidth,product.imageHeight]);
  const reset=()=>{setZoom(1);setPan({x:0,y:0})};
  const changeZoom=(value:number)=>{setZoom(clamp(value,1,2.4));setPan({x:0,y:0})};
- const choose=(index:number)=>{setSelected(index);setZoom(features[index].zoom);setPan({x:0,y:0})};
- const move=(x:number,y:number)=>{const limitX=size.width*(zoom-1)*.35,limitY=size.height*(zoom-1)*.35;setPan(old=>({x:clamp(old.x+x,-limitX,limitX),y:clamp(old.y+y,-limitY,limitY)}))};
+ const choose=(index:number)=>{const f=features[index];setSelected(index);setZoom(f.zoom);setPan({x:clamp((50-f.origin[0])*size.width/100,-size.width*(f.zoom-1)*.5,size.width*(f.zoom-1)*.5),y:clamp(((['connection','collar'].includes(f.id)?30:50)-f.origin[1])*size.height/100,-size.height*(f.zoom-1)*.5,size.height*(f.zoom-1)*.5)})};
+ const move=(x:number,y:number)=>{const limitX=size.width*(zoom-1)*.5,limitY=size.height*(zoom-1)*.5;setPan(old=>({x:clamp(old.x+x,-limitX,limitX),y:clamp(old.y+y,-limitY,limitY)}))};
  const key=(event:KeyboardEvent<HTMLDivElement>)=>{if(event.target!==event.currentTarget)return;if(event.key==='+'||event.key==='='){event.preventDefault();changeZoom(zoom+.2)}else if(event.key==='-'){event.preventDefault();changeZoom(zoom-.2)}else if(event.key==='0'||event.key==='Escape'){event.preventDefault();reset()}else if(zoom>1&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)){event.preventDefault();move(event.key==='ArrowLeft'?24:event.key==='ArrowRight'?-24:0,event.key==='ArrowUp'?24:event.key==='ArrowDown'?-24:0)}};
  const pointerDown=(event:PointerEvent<HTMLDivElement>)=>{if(zoom<=1||event.pointerType!=='mouse'||event.button!==0||(event.target as HTMLElement).closest('button,a'))return;drag.current={x:event.clientX,y:event.clientY,panX:pan.x,panY:pan.y};event.currentTarget.setPointerCapture(event.pointerId)};
- const pointerMove=(event:PointerEvent<HTMLDivElement>)=>{const d=drag.current;if(!d)return;const limitX=size.width*(zoom-1)*.35,limitY=size.height*(zoom-1)*.35;setPan({x:clamp(d.panX+event.clientX-d.x,-limitX,limitX),y:clamp(d.panY+event.clientY-d.y,-limitY,limitY)})};
+ const pointerMove=(event:PointerEvent<HTMLDivElement>)=>{const d=drag.current;if(!d)return;const limitX=size.width*(zoom-1)*.5,limitY=size.height*(zoom-1)*.5;setPan({x:clamp(d.panX+event.clientX-d.x,-limitX,limitX),y:clamp(d.panY+event.clientY-d.y,-limitY,limitY)})};
  return <div className={`technical-viewer technical-viewer-${product.id}`} data-viewer-product={product.id}>
   <div className="technical-viewer-stage">
    <div className="technical-viewer-viewport" ref={viewport} tabIndex={0} role="group" aria-label={`${product.name} · ${t.imageViewer}`} aria-describedby={`${id}-help`} data-zoomed={zoom>1} onKeyDown={key} onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={()=>{drag.current=null}} onPointerCancel={()=>{drag.current=null}} onLostPointerCapture={()=>{drag.current=null}}>
     <div className="technical-viewer-grid" aria-hidden="true"/>
     <div className="technical-viewer-canvas" style={{width:size.width||'100%',height:size.height||'100%','--viewer-zoom':zoom,'--viewer-pan-x':`${pan.x}px`,'--viewer-pan-y':`${pan.y}px`,'--viewer-origin':`${feature?.origin[0]||50}% ${feature?.origin[1]||50}%`} as CSSProperties}>
-     <div className="technical-viewer-transform"><StaticImage src={product.image} width={product.imageWidth} height={product.imageHeight} alt={product.name} sizes={`(max-width:768px) ${Math.round(85*zoom)}vw,${Math.round(45*zoom)}vw`} draggable={false} className="technical-viewer-image"/>
+     <div className="technical-viewer-transform"><StaticImage src={product.image} width={product.imageWidth} height={product.imageHeight} alt={product.name} sizes="(max-width:768px) 180vw,90vw" draggable={false} className="technical-viewer-image"/>
       {ready&&features.map((f,index)=>f.hotspot&&<button key={f.id} className="viewer-hotspot" tabIndex={zoom===1?0:-1} aria-label={`${String(index+1).padStart(2,'0')} ${t.inspect}: ${f.title}`} aria-pressed={selected===index} aria-controls={`${id}-feature`} style={{left:`${f.hotspot[0]}%`,top:`${f.hotspot[1]}%`}} onClick={()=>choose(index)}><span aria-hidden="true">{String(index+1).padStart(2,'0')}</span></button>)}
      </div>
     </div>
+    {product.id==='smart'&&feature?.id==='surface'&&<figure className="surface-sample"><StaticImage src="/images/editorial/surface-detail.png" width={168} height={168} alt={getV12Copy(locale).surfaceCaption}/><figcaption>{getV12Copy(locale).surfaceCaption}</figcaption></figure>}
     <span className="technical-viewer-scale" aria-hidden="true">{Math.round(zoom*100)}%</span>
    </div>
    <div className="technical-viewer-toolbar" role="group" aria-label={t.viewControls}>
@@ -37,7 +40,7 @@ export function TechnicalViewer({product,locale,features}:{product:Product;local
     <button type="button" aria-label={t.zoomIn} disabled={zoom>=2.4} onClick={()=>changeZoom(zoom+.2)}>+</button>
     <button type="button" className="viewer-reset" onClick={reset}>{t.reset}</button>
    </div>
-   <p className="technical-viewer-help" id={`${id}-help`}>{t.controlsHelp}</p>
+   <p className="technical-viewer-help" id={`${id}-help`}>{t.controlsHelp}</p><MotionToggle locale={locale}/>
   </div>
   <div className="technical-viewer-inspector">
    <p className="eyebrow">{t.featureNavigation}</p>
