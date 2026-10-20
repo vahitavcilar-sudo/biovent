@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "deliveryCommit": "eea54b7a3ffd28282b01fee10667af94149a5811",
+  "sourceCommit": "50dfe1da6687b8a08e824cf7ab943831dc4d0257",
+  "buildId": "KXldNxO4xHvsHwuHH227N",
+  "downloads": [
+    {
+      "filename": "biovent-v11-source.zip",
+      "url": "https://github.com/vahitavcilar-sudo/biovent/raw/eea54b7a3ffd28282b01fee10667af94149a5811/biovent-v11-source.zip",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "contentType": "application/zip",
+      "bytes": 76542581,
+      "sha256": "023ccaa85949b9d94f77ed8828dab336bc25bda70f674fde32514b18837e6018",
+      "crcPassed": true,
+      "manifestFilesVerified": 377
+    },
+    {
+      "filename": "biovent-v11-static-hosting.zip",
+      "url": "https://github.com/vahitavcilar-sudo/biovent/raw/eea54b7a3ffd28282b01fee10667af94149a5811/biovent-v11-static-hosting.zip",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "contentType": "application/zip",
+      "bytes": 40023590,
+      "sha256": "c4eb7a3c1b4f3e1b68a34cd516713ef7163e40a9e10cc947c8a271284c76a7e8",
+      "crcPassed": true,
+      "manifestFilesVerified": 426
+    },
+    {
+      "filename": "biovent-v11-windows-test.zip",
+      "url": "https://github.com/vahitavcilar-sudo/biovent/raw/eea54b7a3ffd28282b01fee10667af94149a5811/biovent-v11-windows-test.zip",
+      "status": 200,
+      "finalHost": "raw.githubusercontent.com",
+      "contentType": "application/zip",
+      "bytes": 65313081,
+      "sha256": "456a5b8cbdccefa8f4817cc386fed76637fd94485454c9317750e240aeb3aa9f",
+      "crcPassed": true,
+      "manifestFilesVerified": 449
+    }
+  ]
+}
