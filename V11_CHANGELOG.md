@@ -21,3 +21,7 @@
 Product detail enquiry links now open the professional workflow instead of the distributor application; the latter remains available through a separate explicit path. V10's valid functionality was extended, not removed.
 
 No live form receiver, verified legal/controller details or Natro deployment was supplied. Forms remain preview-only by default. New Promx original PNG, approved CAD/extra angles, certain per-variant prosthetic/clinical documents and manufacturing/certification evidence remain missing. See the product audit, required-assets and QA reports. No live website changes were made.
+
+## Playback correction — 20 October 2026
+
+Explicit play now starts automatic progression under the pointer and on the focused play button; new user interactions still pause safely. A four-language status explains pause/device/data constraints, including on mobile. See `V11_MOTION_FIX.md` for this build’s targeted validation and updated Windows package. Old QA movies are excluded from that local-review package.

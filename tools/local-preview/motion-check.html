@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="tr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BioVent — hareket ayarı kontrolü</title>
+<style>body{font:17px/1.7 system-ui,sans-serif;max-width:760px;margin:50px auto;padding:24px;color:#172027;background:#f4f5f1}h1{line-height:1.2}#result{padding:24px;border:1px solid #a1afb7;background:white}li{margin:12px 0}code{font-size:.9em}</style>
+<h1>BioVent hareket ayarı kontrolü</h1>
+<p>Bu dosya cihazınızın hareket tercihini gösterir. Siteyi açmak için <code>SITEYI-AC.bat</code> dosyasını kullanın.</p>
+<div id="result">JavaScript kontrolü yükleniyor… JavaScript kapalıysa sonuç gösterilemez.</div>
+<h2>Hareketler görünmüyorsa</h2>
+<ol><li>Sitenin açılış alanının altındaki ortadaki <strong>▶ oynat</strong> düğmesine basın. İlk otomatik ürün değişimi yaklaşık 8,5 saniye sonra gerçekleşir. Ürün adlarına veya oklara basarak geçişleri hemen inceleyebilirsiniz.</li>
+<li>Bu sayfada hareket azaltma açık görünüyorsa ve animasyonları görmek istiyorsanız: Windows 11'de <strong>Ayarlar → Erişilebilirlik → Görsel efektler → Animasyon efektleri</strong>; Windows 10'da <strong>Ayarlar → Erişim Kolaylığı → Ekran → Windows'ta animasyonları göster</strong> ayarını açın.</li>
+<li>Ayarı değiştirdikten sonra siteyi yenileyin. Veri tasarrufu açıkken otomatik geçiş kapalı kalabilir; ürünler oklarla seçilebilir.</li></ol>
+<p>Eski paketteki <code>HAREKET-VIDEOLARI</code> klasörü tarayıcı test kayıtlarıdır. Bunlar siteye gömülü ürün filmleri değildir. Sitedeki hareketler ürün görsellerine uygulanır.</p>
+<script>const motion=matchMedia('(prefers-reduced-motion:reduce)'),data=matchMedia('(prefers-reduced-data:reduce)');function update(){const c=navigator.connection;document.getElementById('result').textContent='Hareket azaltma: '+(motion.matches?'AÇIK — site cihaz tercihinize uyar.':'KAPALI — animasyonlara izin veriliyor.')+' Veri tasarrufu: '+(data.matches||c?.saveData||c?.effectiveType?.includes('2g')?'AÇIK':'KAPALI')+'.'}motion.addEventListener('change',update);data.addEventListener('change',update);navigator.connection?.addEventListener('change',update);update();</script>
+</html>

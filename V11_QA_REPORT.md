@@ -1,5 +1,7 @@
 # BioVent V11 QA report
 
+This report records the original V11 build below. Later playback-correction tests and the corrected build are documented separately in `V11_MOTION_FIX.md`; these original performance numbers must not be presented as a rerun of that correction.
+
 Test date: 20 October 2026. Final root export build: `KXldNxO4xHvsHwuHH227N`.
 Tests ran against the actual static hosting files, not a development server.
 No live Natro/JetPress/WordPress site was changed and no external enquiry was sent.

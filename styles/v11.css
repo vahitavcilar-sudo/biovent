@@ -17,3 +17,7 @@ html:not([data-route-arrival]) .product-hero .breadcrumb,html:not([data-route-ar
 
 /* Keep product links clear of the full-width portfolio link and expose focused scenes. */
 .v8-signature-products{bottom:24%}.signature-product figcaption{bottom:0}.signature-product figcaption a{min-height:44px}.signature-product:focus-within{opacity:1!important;transform:none!important}@media(max-width:768px){.signature-product figcaption{bottom:0}}
+
+/* Explain automatic playback without hiding the controls or overriding device preferences. */
+.showroom-playback-status{font-size:10px;line-height:1.45;color:#bec8ce;margin-inline-start:8px;max-width:44%;text-wrap:balance}.v8-showroom[data-showroom-active=monoblock] .showroom-playback-status{color:#39454e}.showroom-utilities button:disabled{cursor:default;border-style:dashed}
+@media(max-width:768px){.showroom-controls{height:140px}.showroom-scene{bottom:140px}.showroom-utilities{flex-wrap:wrap}.showroom-utilities button{flex-shrink:0}.showroom-playback-status{order:5;flex:0 0 100%;font-size:10px;max-width:none;margin:0}.showroom-scroll{order:4}}

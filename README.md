@@ -1,5 +1,7 @@
 # BioVent V11
 
+Current playback correction: see `V11_MOTION_FIX.md`. The updated Windows review ZIP makes explicit play work while the pointer and focus remain on the control, and explains device motion constraints.
+
 A four-language, product-focused dental implant manufacturer website built on Next.js 16, React 19 and TypeScript. The existing Smart-first motion stage, continuous engineering journey, official logo, genuine products, catalogues, responsive/RTL behavior and static hosting architecture are preserved.
 
 V11 adds authentic-image technical dossiers for all four implant systems, 84 catalogue-listed configurations, exact product-to-enquiry transfer, separate professional information/quotation and distributor workflows, focused comparison, searchable resources and improved conversion/navigation. Technical claims and conflicts are recorded in `V11_PRODUCT_DATA_AUDIT.md`; missing assets are not represented as completed.
