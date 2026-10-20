@@ -1,0 +1,27 @@
+{
+  "buildId": "KXldNxO4xHvsHwuHH227N",
+  "archives": [
+    {
+      "bytes": 76542581,
+      "files": 378,
+      "sha256": "023ccaa85949b9d94f77ed8828dab336bc25bda70f674fde32514b18837e6018",
+      "filename": "biovent-v11-source.zip"
+    },
+    {
+      "bytes": 40023590,
+      "files": 427,
+      "sha256": "c4eb7a3c1b4f3e1b68a34cd516713ef7163e40a9e10cc947c8a271284c76a7e8",
+      "filename": "biovent-v11-static-hosting.zip"
+    },
+    {
+      "bytes": 65313081,
+      "sha256": "456a5b8cbdccefa8f4817cc386fed76637fd94485454c9317750e240aeb3aa9f",
+      "filename": "biovent-v11-windows-test.zip"
+    }
+  ],
+  "originalVideoMastersIncluded": false,
+  "newPromxOriginalImported": false,
+  "windowsExecuted": false,
+  "livePublished": false,
+  "sourceCommit": "50dfe1da6687b8a08e824cf7ab943831dc4d0257"
+}
