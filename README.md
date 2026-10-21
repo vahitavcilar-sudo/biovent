@@ -32,3 +32,5 @@ Smart ilk açılır. Beş saniyelik varsayılan ürün geçişi, V13 talebine g�
 ![Smart teknik inceleme](preview/smart-1440-connection.png)
 
 Her ZIP içinde SHA256-MANIFEST.json bulunur. Paket boyutları/hash'leri DELIVERY.json içinde kaydedilmiştir. Kaynak commit: f0e10feb862668bddf0516a194d413f0d527b043; son derleme: BBD6KvV55GQMfAz6Py4ea.
+
+[İndirme doğrulaması](DOWNLOAD-VERIFICATION.json): Beş GitHub bağlantısı HTTP 200/application-zip ile yeniden indirildi; arşiv SHA-256, ZIP CRC ve her dosyanın manifest hash değeri doğrulandı. Kaynak ZIP temiz klasörde npm ci/typecheck/export/package:draft ile yeniden derlendi.
