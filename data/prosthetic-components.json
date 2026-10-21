@@ -1,0 +1,73 @@
+{
+  "smart": [
+    {
+      "id": "healing-abutment",
+      "label": "Healing abutments",
+      "source": {
+        "documentId": "smart",
+        "page": 10
+      },
+      "scope": "catalogue-family-only"
+    },
+    {
+      "id": "temporary-abutment",
+      "label": "Temporary abutments",
+      "source": {
+        "documentId": "smart",
+        "page": 10
+      },
+      "scope": "catalogue-family-only"
+    },
+    {
+      "id": "cemented-abutment",
+      "label": "Cemented abutments",
+      "source": {
+        "documentId": "smart",
+        "page": 11
+      },
+      "scope": "catalogue-family-only"
+    },
+    {
+      "id": "angled-abutment",
+      "label": "Angled abutments",
+      "source": {
+        "documentId": "smart",
+        "page": 11
+      },
+      "scope": "catalogue-family-only"
+    },
+    {
+      "id": "multi-unit",
+      "label": "Multi-unit abutments",
+      "source": {
+        "documentId": "smart",
+        "page": 13
+      },
+      "scope": "catalogue-family-only"
+    }
+  ],
+  "promx": [],
+  "monoblock": [
+    {
+      "id": "one-piece-analog",
+      "label": "One-piece implant analog",
+      "reference": "CAGM-215",
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "scope": "catalogue-family-only"
+    },
+    {
+      "id": "one-piece-transfer",
+      "label": "Transfer for one-piece implant",
+      "reference": "CAGM-306",
+      "source": {
+        "documentId": "portfolio",
+        "page": 5
+      },
+      "scope": "catalogue-family-only"
+    }
+  ],
+  "zygoma": []
+}

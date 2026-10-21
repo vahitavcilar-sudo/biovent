@@ -1,9 +1,9 @@
-import {getV12Copy} from '@/lib/v12-copy';
-import Link from 'next/link';
-import {Arrow} from '@/components/ui/primitives';
-import {getShowroomCopy} from '@/lib/showroom';
-import {BrandFilm} from '@/components/media/brand-film';
-import {BrandLogo} from '@/components/brand/brand-logo';import {getV4Copy} from '@/lib/v4-copy';
-import {StaticImage as Image} from '@/components/ui/static-image';import {getCopy} from '@/lib/i18n';import {resolveLocale} from '@/lib/locale';import {pageMetadata} from '@/lib/seo';import {PageIntro,DistributorBanner} from '@/components/sections/shared';import {products} from '@/data/products';import {ProductVisual} from '@/components/product/product-visual';import {Button,Label,Lines} from '@/components/ui/primitives';
-export async function generateMetadata({params}:{params:Promise<{locale:string}>}){return pageMetadata(await resolveLocale(params),'about')}
-export default async function Page({params}:{params:Promise<{locale:string}>}){const locale=await resolveLocale(params),c=getCopy(locale),v=getV4Copy(locale);return <><PageIntro eyebrow={c.aboutEyebrow} title={getV12Copy(locale).companyTitle} copy={c.aboutIntro}/><section className="about-brand-section"><div className="container about-brand-grid"><div><BrandLogo context="corporate"/><span>{c.navProducts} / {c.engineering} / {c.technical}</span></div><div><Label>{c.portfolioEyebrow}</Label><h2><Lines text={c.aboutTitle2}/></h2><p>{c.aboutCopy}</p><Button href={`/${locale}/products/`}>{c.allSystems}</Button></div></div></section><section className="container about-pillars section-pad v8-about-pillars" aria-label={getShowroomCopy(locale).partners}>{[{title:c.aboutProofTitle,copy:c.aboutProofCopy},{title:c.aboutMarkets,copy:c.aboutMarketsCopy},{title:c.featureComponents,copy:c.workflowCopy}].map((s,i)=><div key={i}><span>0{i+1}</span><h2>{s.title}</h2><p>{s.copy}</p></div>)}</section><div className="container about-collection">{products.map(p=><div key={p.id}><ProductVisual product={p}/><h3>{p.name}</h3><p>{c[p.tag]}</p><Link className="text-link" href={`/${locale}/products/${p.id}/`}>{c.viewSystem}<Arrow/></Link></div>)}</div><BrandFilm locale={locale} copy={c}/><DistributorBanner locale={locale} copy={c}/></>}
+import {company} from '@/data/company';
+import {siteUrl} from '@/lib/seo';
+import {resolveLocale} from '@/lib/locale';
+import {getV13Copy} from '@/lib/v13-copy';
+import {metadata} from '@/lib/seo';
+import {PageIntro} from '@/components/sections/shared';
+import {ManufacturerProfile} from '@/components/corporate/manufacturer-profile';
+export async function generateMetadata({params}:{params:Promise<{locale:string}>}){const locale=await resolveLocale(params),t=getV13Copy(locale).company;return metadata(locale,'/about',t.title,t.intro)}
+export default async function Page({params}:{params:Promise<{locale:string}>}){const locale=await resolveLocale(params),t=getV13Copy(locale).company;return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({"@context":"https://schema.org","@type":"Organization",name:company.name,legalName:company.legalName,url:siteUrl,address:{"@type":"PostalAddress",streetAddress:"Am Hagelkreuz 23",postalCode:"41469",addressLocality:"Neuss",addressCountry:"DE"}}).replace(/</g,'\\u003c')}}/><PageIntro eyebrow={t.eyebrow} title={t.title} copy={t.intro}/><ManufacturerProfile locale={locale}/></>}

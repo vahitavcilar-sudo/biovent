@@ -1,0 +1,4 @@
+const fs=require('fs'),vm=require('vm'),ts=require('typescript'),assert=require('node:assert/strict');
+const source=ts.transpileModule(fs.readFileSync('lib/showroom.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
+function load(value){const exports={};vm.runInNewContext(source,{exports,process:{env:{NEXT_PUBLIC_SHOWROOM_INTERVAL_MS:value}}});return exports.showroomMotion.autoplay}
+const cases=[];for(const [value,expected]of [[undefined,5000],['5000',5000],['8000',8000],['15000',15000]]){assert.equal(load(value),expected);cases.push({value:value||'default',expected})}for(const value of ['4000','oops','16000','5000.1']){assert.throws(()=>load(value),/interval/);cases.push({value,rejected:true})}fs.writeFileSync('artifacts/v13/interval-configuration.json',JSON.stringify({passed:true,checks:cases},null,2));console.log('Five-second default, optional reading time and invalid interval rejection passed.');

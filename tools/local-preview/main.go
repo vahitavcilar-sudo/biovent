@@ -182,7 +182,7 @@ func main() {
 		http.ServeContent(w, r, info.Name(), info.ModTime(), file)
 	})
 	server := &http.Server{Handler: handler, ReadHeaderTimeout: 10 * time.Second, IdleTimeout: 30 * time.Second}
-	fmt.Println("BIOVENT V12 - YEREL SITE ONIZLEMESI")
+	fmt.Println("BIOVENT V13 - YEREL SITE ONIZLEMESI")
 	fmt.Println("Site adresi: " + address + "/tr/")
 	fmt.Println("Bu pencereyi acik tutun. Bitirmek icin Ctrl+C basin.")
 	fmt.Println("YEREL TEST: Basvuru formu gercek e-posta gondermez.")

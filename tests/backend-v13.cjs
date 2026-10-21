@@ -1,0 +1,8 @@
+const fs=require('node:fs'),path=require('node:path'),{spawnSync}=require('node:child_process'),assert=require('node:assert/strict');
+const fallback='/tmp/biovent-v13-php/node_modules/.bin/php-wasm-cli';
+const php=process.env.BIOVENT_PHP||(fs.existsSync(fallback)?fallback:'php');
+const run=args=>{const r=spawnSync(php,args,{encoding:'utf8'});if(r.error)throw new Error('PHP 8.1+ is required; set BIOVENT_PHP to a verified PHP CLI executable. '+r.error.message);assert.equal(r.status,0,r.stderr||r.stdout);assert.ok(!/Fatal error|Parse error/i.test(r.stdout+r.stderr),r.stdout+r.stderr);return r.stdout};
+fs.mkdirSync('artifacts/v13',{recursive:true});const report='artifacts/v13/backend-results.json';if(fs.existsSync(report))fs.unlinkSync(report);
+const files=['deployment/form-backend/private/receiver.php','deployment/form-backend/private/config.example.php','deployment/form-backend/private/dispatch.php','deployment/form-backend/private/dispatcher.php','deployment/form-backend/public/professional.php','deployment/form-backend/public/distributor.php','tests/php/backend-v13.php'];
+for(const file of files)assert.match(run(['-l',file]),/No syntax errors detected/);
+run(['tests/php/backend-v13.php']);assert.ok(fs.existsSync(report),'PHP must emit evidence from this execution');const result=JSON.parse(fs.readFileSync(report));assert.ok(result.passed&&result.cases>=41);result.lintedFiles=files;result.command=path.basename(php);result.nativeNatroTested=false;fs.writeFileSync(report,JSON.stringify(result,null,2));console.log(`${result.cases} PHP receiver cases and ${files.length} syntax checks passed; no live email delivery.`);
